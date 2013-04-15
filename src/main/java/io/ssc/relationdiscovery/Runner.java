@@ -40,7 +40,7 @@ public class Runner {
     int numPatterns = 58702;
 
     // desired rank for dimension reduction
-    int rank = 50;
+    int rank = 25;
 
     // distance measure for clustering
     DistanceMeasure distanceMeasure = new CosineDistanceMeasure();

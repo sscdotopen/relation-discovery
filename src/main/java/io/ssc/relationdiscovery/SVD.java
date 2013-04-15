@@ -116,9 +116,9 @@ public class SVD {
 
   public Matrix projectRowsOntoFeatureSpace() {
 
-    SparseRowMatrix projection = new SparseRowMatrix(A.numCols(), rank);
+    SparseRowMatrix projection = new SparseRowMatrix(A.numRows(), rank);
 
-    for (int patternIndex = 0; patternIndex < A.numCols(); patternIndex++) {
+    for (int patternIndex = 0; patternIndex < A.numRows(); patternIndex++) {
 
       Vector patternOccurrences = A.viewRow(patternIndex);
 
