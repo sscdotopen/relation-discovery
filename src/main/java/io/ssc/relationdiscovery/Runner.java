@@ -46,9 +46,9 @@ public class Runner {
     DistanceMeasure distanceMeasure = new CosineDistanceMeasure();
 
     // number of clusters (k of k-Means)
-    int numClusters = 25;
-    // number of iterations to run
-    int numIterations = 30;
+    int numClusters = 10;
+    // maximum number of iterations to run
+    int maxIterations = 100;
     // number of points to print per cluster
     int numClosestPointsPerCluster = 20;
 
@@ -66,7 +66,7 @@ public class Runner {
 
     KMeans kMeans = new KMeans(P, numClusters, distanceMeasure);
 
-    kMeans.run(numIterations);
+    kMeans.run(maxIterations);
 
     for (int n = 0; n < numClusters; n++) {
       System.out.println("-----" + n + "------");
