@@ -63,10 +63,10 @@ public class KMeans {
   public void run(int maxIterations) {
 
     int iteration = 0;
-    double averageChange = Double.MAX_VALUE;
-    while (iteration++ < maxIterations && averageChange > 0.00001) {
+    double maxChange = Double.MAX_VALUE;
+    while (iteration++ < maxIterations && maxChange > 0.00001) {
       log.info("Running Iteration {}", iteration);
-      averageChange = singleIteration();
+      maxChange = singleIteration();
     }
   }
 
@@ -139,15 +139,14 @@ public class KMeans {
       nextCentroids[nearestCentroid].update(row);
     }
 
-    double averageChange = 0;
+    double maxChange = 0;
     for (int n = 0; n < k; n++) {
-      averageChange += centroids[n].minus(nextCentroids[n]).norm(2);
+      maxChange = Math.max(maxChange, centroids[n].minus(nextCentroids[n]).norm(2));
     }
-    averageChange /= k;
 
     centroids = nextCentroids;
 
-    return averageChange;
+    return maxChange;
   }
 
 }
